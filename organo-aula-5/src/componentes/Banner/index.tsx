@@ -6,9 +6,6 @@ interface BannerProps {
 }
 
 export const Banner = ({enderecoImagem, textoAlternativo} :BannerProps) => {
-    // JSX
-    // /imagens/banner.png"
-    // O banner principal da página do Organo
     return (
         <header className="banner">
             <img src={enderecoImagem} alt={textoAlternativo}/>
