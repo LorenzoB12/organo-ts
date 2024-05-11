@@ -1,28 +1,40 @@
 import { IColaborador } from '../../compartilhado/interfaces/IColaborador'
+import { ITimes } from '../../compartilhado/interfaces/ITimes'
 import Colaborador from '../Colaborador'
-import './Time.css'
+import styles from './Time.module.css'
+import fundo from '../../imagens/fundo.png';
+import hexToRgba from 'hex-to-rgba';
 
 interface TimeProps {
-    corPrimaria: string
-    corSecundaria: string
-    nome: string
+    time: ITimes
     colaboradores: IColaborador[]
+    aoDeletar: (id: string) => void
+    mudarCor: (cor: string, id: string) => void
+    aoFavoritar: (id: string) => void
 }
 
-const Time = (props: TimeProps) => {
-    const css = { backgroundColor: props.corSecundaria }
-
+const Time = ({time, colaboradores, aoDeletar, mudarCor, aoFavoritar}: TimeProps) => {
     return (
-        (props.colaboradores.length > 0) ? <section className='time' style={css}>
-            <h3 style={{ borderColor: props.corPrimaria }}>{props.nome}</h3>
-            <div className='colaboradores'>
-                {props.colaboradores.map( colaborador => 
+        (colaboradores.length > 0) ? 
+        <section 
+            className={styles.time}
+            style={{backgroundImage: fundo, backgroundColor: hexToRgba(time.cor, 0.6)}}
+        >
+            <input 
+                value={time.cor}
+                type='color'
+                className={styles.inputCor}
+                onChange={event => mudarCor(event.target.value, time.id)}
+            />
+            <h3 style={{ borderColor: time.cor }}>{time.nome}</h3>
+            <div className={styles.colaboradores}>
+                {colaboradores.map( (colaborador, indice) => 
                     <Colaborador 
-                        corDeFundo={props.corPrimaria} 
-                        key={colaborador.nome} 
-                        nome={colaborador.nome} 
-                        cargo={colaborador.cargo} 
-                        imagem={colaborador.imagem}
+                        key={indice} 
+                        colaborador={colaborador}
+                        corDeFundo={time.cor} 
+                        aoDeletar={aoDeletar}
+                        aoFavoritar={aoFavoritar}
                     /> )}
             </div>
         </section> 

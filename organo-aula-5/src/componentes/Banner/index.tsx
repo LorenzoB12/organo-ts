@@ -1,4 +1,4 @@
-import './Banner.css'
+import styles from './Banner.module.css'
 
 interface BannerProps {
     enderecoImagem: string
@@ -10,7 +10,7 @@ export const Banner = ({enderecoImagem, textoAlternativo} :BannerProps) => {
     // /imagens/banner.png"
     // O banner principal da página do Organo
     return (
-        <header className="banner">
+        <header className={styles.banner}>
             <img src={enderecoImagem} alt={textoAlternativo}/>
         </header>
     )

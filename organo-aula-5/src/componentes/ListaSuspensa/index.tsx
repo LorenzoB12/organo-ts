@@ -1,4 +1,4 @@
-import './ListaSuspensa.css'
+import styles from './ListaSuspensa.module.css';
 
 interface ListaSuspensaProps {
     aoAlterado: (valor: string) => void
@@ -10,7 +10,7 @@ interface ListaSuspensaProps {
 
 const ListaSuspensa = ({aoAlterado, label, required = false, valor, itens} : ListaSuspensaProps) => {
     return (
-        <div className='lista-suspensa'>
+        <div className={styles.listaSuspensa}>
             <label>{label}</label>
             <select 
                 onChange={evento => 

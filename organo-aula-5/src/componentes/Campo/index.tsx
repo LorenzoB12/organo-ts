@@ -1,6 +1,7 @@
-import './CampoTexto.css'
+import styles from './Campo.module.css'
 
-interface CampoTextoProps {
+interface CampoProps {
+    tipo?: 'text' | 'number' | 'date' | 'password' | 'email' | 'readonly' | 'color'
     placeholder: string
     aoAlterado: (valor: string) => void
     label: string
@@ -8,7 +9,7 @@ interface CampoTextoProps {
     obrigatorio?: boolean
 }
 
-const CampoTexto = ({placeholder, aoAlterado, label, valor, obrigatorio = false} : CampoTextoProps) => {
+const Campo = ({tipo = 'text', placeholder, aoAlterado, label, valor, obrigatorio = false} : CampoProps) => {
 
     const placeholderModificada = `${placeholder}...` 
 
@@ -17,11 +18,12 @@ const CampoTexto = ({placeholder, aoAlterado, label, valor, obrigatorio = false}
     }
 
     return (
-        <div className="campo-texto">
+        <div className={`${styles.campo} ${tipo === 'color' ? styles['campo-color'] : ''}`}>
             <label>
                 {label}
             </label>
-            <input 
+            <input
+                type={tipo} 
                 value={valor} 
                 onChange={aoDigitado} 
                 required={obrigatorio} 
@@ -31,4 +33,4 @@ const CampoTexto = ({placeholder, aoAlterado, label, valor, obrigatorio = false}
     )
 }
 
-export default CampoTexto
+export default Campo;

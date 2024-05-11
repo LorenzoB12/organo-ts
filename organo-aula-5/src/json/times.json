@@ -1,0 +1,30 @@
+[
+    { 
+      "nome": "Programação",
+      "cor": "#57C278"
+    },
+    {
+      "nome": "Front-End",
+      "cor": "#82CFFA"
+    },
+    {
+      "nome": "Data Science",
+      "cor": "#A6D157"
+    },
+    {
+      "nome": "Devops",
+      "cor": "#E06B69"
+    },
+    {
+      "nome": "UX e Design",
+      "cor": "#DB6EBF"
+    },
+    {
+      "nome": "Mobile",
+      "cor": "#FFBA05"
+    },
+    {
+      "nome": "Inovação e Gestão",
+      "cor": "#FF8A29"
+    }
+]
